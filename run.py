@@ -71,7 +71,13 @@ def update_distance_worksheet(data):
     sales_worksheet.append_row(data)
     print("Distance worksheet updated successfully.\n")
 
+def main():
+    """
+    Run all program functions
+    """
+    data = get_distance_data()
+    distance_data = [int(num) for num in data]
+    update_distance_worksheet(distance_data)
 
-data = get_distance_data()
-distance_data = [int(num) for num in data]
-update_distance_worksheet(distance_data)
+print("Thank you for taking the time to complete our survey")
+main()
