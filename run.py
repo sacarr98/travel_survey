@@ -16,4 +16,13 @@ distance = SHEET.worksheet('distance')
 
 data = distance.get_all_values()
 
-print(data)
+
+def get_distance_data():
+    """
+    Get distance figures input from the user.
+    """
+    distance_data = input("How many miles do you travel to work everyday?\n")
+
+    return distance_data
+
+
