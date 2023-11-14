@@ -111,7 +111,7 @@ def get_transport_columns():
     transport = SHEET.worksheet("transport")
 
     columns = []
-    for ind in range(1, 6):
+    for ind in range(1, 7):
         column = transport.col_values(ind)
         columns.append(column[2:])
 
@@ -129,10 +129,19 @@ def calculate_transport_data(t_data):
         int_column = [int(num) for num in column]
         total = sum(int_column)
         new_transport_data.append(total)
-    
-    print(new_transport_data)
 
     return new_transport_data
+
+
+def update_transport_results_worksheet(t_data):
+    """
+    Update transport results worksheet, clearing previous data so only new sum is visible
+    """
+    print("Updating transport results worksheet...\n")
+    transport_results_worksheet = SHEET.worksheet("transport_results")
+    transport_results_worksheet.delete_rows(2, end_index=3)
+    transport_results_worksheet.append_row(t_data)
+    print("Transport results worksheet updated successfully.\n")
 
 
 def main(): 
@@ -147,6 +156,7 @@ def main():
     update_transport_worksheet(transport_data)
     transport_columns = get_transport_columns()
     total_transport_data = calculate_transport_data(transport_columns)
+    update_transport_results_worksheet(total_transport_data)
 
 
 print("Thank you for taking the time to complete our survey")
