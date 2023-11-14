@@ -75,11 +75,19 @@ def get_transport_data():
     """
     Asks questions about method of travel to work, adds values to a list.
     """
-    walking_str = input("How often do you walk to work each week?\n")
+    walking_str = input("How many times do you walk to work each week?\n")
 
-    cycling_str = input("How often do you cycle to work each wwek?\n")
+    cycling_str = input("How many times do you cycle to work each week?\n")
 
-    transport_data = [walking_str, cycling_str]
+    driving_str = input("How many times do you drive to work each week?\n")
+
+    carpool_str = input("How many times do you car pool to work each week?\n")
+
+    bus_str = input("How many times do you take the bus to work each week?\n")
+
+    train_str = input("How many times do you take the train to work each week?\n")
+
+    transport_data = [walking_str, cycling_str, driving_str, carpool_str, bus_str, train_str]
 
     return transport_data
 
