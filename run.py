@@ -102,6 +102,39 @@ def update_transport_worksheet(t_data):
     print("Transport worksheet updated successfully.\n")
 
 
+def get_transport_columns():
+    """
+    Collects columns of data from sales worksheet, collecting
+    the last 5 entries for each sandwich and returns the data
+    as a list of lists.
+    """
+    transport = SHEET.worksheet("transport")
+
+    columns = []
+    for ind in range(1, 6):
+        column = transport.col_values(ind)
+        columns.append(column[2:])
+
+    return columns
+
+
+def calculate_transport_data(t_data):
+    """
+    Sum the number of times each method of transport is taken
+    """
+    print("Calculating transport data...\n")
+    new_transport_data = []
+
+    for column in t_data:
+        int_column = [int(num) for num in column]
+        total = sum(int_column)
+        new_transport_data.append(total)
+    
+    print(new_transport_data)
+
+    return new_transport_data
+
+
 def main(): 
     """
     Run all program functions
@@ -112,6 +145,8 @@ def main():
     t_data = get_transport_data()
     transport_data = [int(num) for num in t_data]
     update_transport_worksheet(transport_data)
+    transport_columns = get_transport_columns()
+    total_transport_data = calculate_transport_data(transport_columns)
 
 
 print("Thank you for taking the time to complete our survey")
