@@ -84,8 +84,6 @@ def get_distance_column():
         d_column = distance.col_values(ind)
         d_columns.append(d_column[2:])
 
-    print(d_columns[0])
-
     return d_columns[0]
 
 
@@ -97,11 +95,21 @@ def calculate_distance_data(d_data):
     distances_counted = Counter(d_data)
     distances_sorted = sorted(distances_counted.items())
 
-    print(distances_counted)
     print(distances_sorted)
 
-    return(distances_sorted)
-    
+    return distances_sorted
+
+
+def update_distance_result_worksheet(d_data):
+    """
+    Update distance worksheet, add new row with the list data provided
+    """
+    print("Updating distance result worksheet...\n")
+    distance_result_worksheet = SHEET.worksheet("distance_results")
+    for row in d_data:
+        distance_result_worksheet.append_row(row)
+    print("Distance_result worksheet updated successfully.\n")
+
 
 
 def get_transport_data():
@@ -184,6 +192,9 @@ def main():
     d_data = get_distance_data()
     distance_data = [int(num) for num in d_data]
     update_distance_worksheet(distance_data)
+    d_columns = get_distance_column()
+    distances_counted = calculate_distance_data(d_columns)
+    update_distance_result_worksheet(distances_counted)
     t_data = get_transport_data()
     transport_data = [int(num) for num in t_data]
     update_transport_worksheet(transport_data)
@@ -193,10 +204,4 @@ def main():
 
 
 print("Thank you for taking the time to complete our survey")
-#main()
-
-d_data = get_distance_data()
-distance_data = [int(num) for num in d_data]
-update_distance_worksheet(distance_data)
-d_columns = get_distance_column()
-distances_counted = calculate_distance_data(d_columns)
+main()
