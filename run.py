@@ -71,6 +71,39 @@ def update_distance_worksheet(d_data):
     print("Distance worksheet updated successfully.\n")
 
 
+def get_distance_column():
+    """
+    Collects columns of data from sales worksheet, collecting
+    the last 5 entries for each sandwich and returns the data
+    as a list of lists.
+    """
+    distance = SHEET.worksheet("distance")
+
+    d_columns = []
+    for ind in range(1, 2):
+        d_column = distance.col_values(ind)
+        d_columns.append(d_column[2:])
+
+    print(d_columns[0])
+
+    return d_columns[0]
+
+
+def calculate_distance_data(d_data):
+    """
+    Produces data to plot a graph showing the average distances travelled by employees
+    """ 
+    from collections import Counter
+    distances_counted = Counter(d_data)
+    distances_sorted = sorted(distances_counted.items())
+
+    print(distances_counted)
+    print(distances_sorted)
+
+    return(distances_sorted)
+    
+
+
 def get_transport_data():
     """
     Asks questions about method of travel to work, adds values to a list.
@@ -160,4 +193,10 @@ def main():
 
 
 print("Thank you for taking the time to complete our survey")
-main()
+#main()
+
+d_data = get_distance_data()
+distance_data = [int(num) for num in d_data]
+update_distance_worksheet(distance_data)
+d_columns = get_distance_column()
+distances_counted = calculate_distance_data(d_columns)
