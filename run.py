@@ -29,7 +29,7 @@ def get_distance_data():
     The loop will repeatedly request data, until it is valid.
     """
     while True:
-        print("Please enter your distance to work each day to the nearest mile.")
+        print("Enter your distance to work each day to the nearest mile.\n")
 
         data_str = input("How many miles do you travel to work each day?\n")
 
@@ -53,7 +53,7 @@ def validate_data(values):
         if len(values) != 1:
             raise ValueError(
                 f"Please only enter one value, you provided {len(values)}"
-            )       
+            )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")
         return False
@@ -73,8 +73,7 @@ def update_distance_worksheet(d_data):
 
 def get_distance_column():
     """
-    Collects columns of data from sales worksheet, collecting
-    the last 5 entries for each sandwich and returns the data
+    Collects column of data from distance worksheet, and returns the data
     as a list of lists.
     """
     distance = SHEET.worksheet("distance")
@@ -89,8 +88,11 @@ def get_distance_column():
 
 def calculate_distance_data(d_data):
     """
-    Produces data to plot a graph showing the average distances travelled by employees
-    """ 
+    Produces data to plot a graph showing the average distances travelled by
+    employees,
+    sorting the data into numerical order and providing the number of
+    occurances of each distance
+    """
     from collections import Counter
     distances_counted = Counter(d_data)
     distances_sorted = sorted(distances_counted.items())
@@ -111,31 +113,37 @@ def update_distance_result_worksheet(d_data):
     print("Distance_result worksheet updated successfully.\n")
 
 
-
 def get_transport_data():
     """
     Asks questions about method of travel to work, adds values to a list.
     """
-    walking_str = input("How many times do you walk to work each week?\n")
+    print('''The following questions are about your mode of transport,
+            please enter the number of days you use each mode of
+            transport as a single whole digit.\n''')
 
-    cycling_str = input("How many times do you cycle to work each week?\n")
+    walking_str = input("How often do you walk to work each week?\n")
 
-    driving_str = input("How many times do you drive to work each week?\n")
+    cycling_str = input("How often do you cycle to work each week?\n")
 
-    carpool_str = input("How many times do you car pool to work each week?\n")
+    driving_str = input("How often do you drive to work each week?\n")
 
-    bus_str = input("How many times do you take the bus to work each week?\n")
+    carpool_str = input("How often do you car pool to work each week?\n")
 
-    train_str = input("How many times do you take the train to work each week?\n")
+    bus_str = input("How often do you take the bus to work each week?\n")
 
-    transport_data = [walking_str, cycling_str, driving_str, carpool_str, bus_str, train_str]
+    train_str = input("How often do you take the train to work each week?\n")
+
+    transport_data = [
+        walking_str, cycling_str, driving_str, carpool_str,
+        bus_str, train_str
+        ]
 
     return transport_data
 
 
 def update_transport_worksheet(t_data):
     """
-    Update distance worksheet, add new row with the list data provided
+    Update transport worksheet, add new row with the list data provided
     """
     print("Updating transport worksheet...\n")
     transport_worksheet = SHEET.worksheet("transport")
@@ -145,9 +153,8 @@ def update_transport_worksheet(t_data):
 
 def get_transport_columns():
     """
-    Collects columns of data from sales worksheet, collecting
-    the last 5 entries for each sandwich and returns the data
-    as a list of lists.
+    Collects columns of data from transport worksheet,
+    and returns the data as a list of lists.
     """
     transport = SHEET.worksheet("transport")
 
@@ -161,7 +168,7 @@ def get_transport_columns():
 
 def calculate_transport_data(t_data):
     """
-    Sum the number of times each method of transport is taken
+    Sums the number of times each method of transport is taken
     """
     print("Calculating transport data...\n")
     new_transport_data = []
@@ -176,7 +183,8 @@ def calculate_transport_data(t_data):
 
 def update_transport_results_worksheet(t_data):
     """
-    Update transport results worksheet, clearing previous data so only new sum is visible
+    Update transport results worksheet,
+    clearing previous data so only new sum is visible
     """
     print("Updating transport results worksheet...\n")
     transport_results_worksheet = SHEET.worksheet("transport_results")
@@ -185,7 +193,7 @@ def update_transport_results_worksheet(t_data):
     print("Transport results worksheet updated successfully.\n")
 
 
-def main(): 
+def main():
     """
     Run all program functions
     """
