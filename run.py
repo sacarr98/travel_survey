@@ -98,6 +98,7 @@ def update_distance_result_worksheet(d_data):
     """
     print("Updating distance result worksheet...\n")
     distance_result_worksheet = SHEET.worksheet("distance_results")
+    distance_result_worksheet.delete_rows(2, end_index = 30)
     for row in d_data:
         distance_result_worksheet.append_row(row)
     print("Distance_result worksheet updated successfully.\n")

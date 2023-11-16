@@ -2,9 +2,9 @@
 
 # PORTFOLIO 3 - "Travel Survey"
 
-This is a travel survey designed for a company who wants to gain insights into how their employees travel to work each day. The data collected informs them the average distance emplyees travel and the different modes of transport they use.
+This is a travel survey designed for a company who wants to gain insights into how their employees travel to work each day, to help them decide if they should encourage more employees to work from home. The data collected informs them the average distance emplyees travel and the different modes of transport they use.
 
-The live site can be found [here](https://sacarr98.github.io/Portfolio_1/)
+The live site can be found [here](https://travel-survey-d72fc1637c7d.herokuapp.com/)
 
 ---
 
@@ -40,24 +40,25 @@ The live site can be found [here](https://sacarr98.github.io/Portfolio_1/)
 
 #### First Time Visitor Goals
 
-- To quickly find information about meditative techniques that can improve mental well-being
-- To be encouraged to focus more on personal well-being by learning how simple it is to encorporate into everyday life
-- To be able to easily navigate between pages display different well-being techniques
+- To be able to quickly fill in the survey without error
+- For the employers to easily be able to gain insights from the survey results
 
 ## Features
 
-The website comprised of 5 pages, the index page, 3 informative pages, and a sign-up page.
+The program is connected to a Google Sheets document featuring 4 pages. 
+The app intially asks a question about the distance travelled to work each day. This information is sent to the distances worksheet, the app then runs a function to create a tally of the distances travelled and the number of employees that travel each distance, these will then be plotted on a graph in Google Sheets. This allows the employers to visually see the distribution of the distance each employee travels.
+The app then asks a series of questions about the mode of transport of the employees, asking how many times a week they walk/cycle/train/bus/drive/car pool. These results are sent to the transport worksheet, the sum of these results is sent to the transport_results worksheet where it is plotted on a pie chart in google sheets, allowing the employer to easily see which modes of transport are used most.
 
 ## Future Implementations
 
-In future I would like to create a login option in order to create a user network so users can encourage eachother on their journey in improved mental well-being.
+In future I would like to add a feedback option, where users can provide their thoughts on working from home and how they think it would effect their productivity and enjoyment of work.
 
 ### Accessibility
 
-We have actively tried to ensure our website is accessible friendly as possible, we achieved this by:
-- Using semantic HTML
-- Ensuring sufficient colour contrast throughout the site and using easily readable fonts
-- Providing information for screen readers where icons were used in place of text, for example for our social media icons in the footer
+We have actively tried to ensure the app is accessible friendly as possible, we achieved this by:
+- Messages are sent to the user while data is being collected and processed so that it is clear the app is working
+- Error messages are sent with a clear explaination of the type of error the user has made
+- Clear instructions are given before each user input to help ensure no errors are made
 
 ## Technologies Used
 
@@ -68,22 +69,24 @@ Python
 ### Frameworks, Libraries & Programs Used
 
 Git - for version control
-Github - to save and store files 
+Github - to save and store files
+Heroku - for deployment 
 
 ## Deployment & Local Development
 
 ### Deployment
 
-The site is deployed using GitHub Pages. Visit the deployed site here. To deploy using GitHub pages:
+The site is deployed using Heroku and GitHub. Visit the deployed site [here](https://travel-survey-d72fc1637c7d.herokuapp.com/). To deploy using Heroku pages:
 
-Login or Sign Up to GitHub.
-Open the project repository.
-Click on "Settings" on the navigation bar under the repository title.
-Click on "Pages" in the left hand navigation panel.
-Under "Source", choose which branch to deploy. This should be Main for newer repositories (older repositories may still use Master).
-Choose which folder to deploy from, usually "/root".
-Click "Save", then wait for it to be deployed. It can take some time for the page to be fully deployed.
-Your URL will be displayed above "Source".
+Login or Sign Up to Heruku.
+Click "Create New app" button, and choose a unique name for the application.
+Click on "Settings" on the navigation bar.
+Add config vars for the creds.json file that won't be found on GitHub, to do this click "add congig vars" enter the key as "CREDS" and copy and paste the creds,json file into value and click add.
+Add an additional config var with the key "PORT" and value "8000".
+Now add relevent build packs, these are python and node.js. Ensure phython is listed first after they have been added.
+Now click on the deployment tab, and select deploy from GitHub.
+Login to GitHub and search for the repository name "travel_survey". The repository can also be found [here](https://github.com/sacarr98/travel_survey)
+Then scroll down and click deploy and wait for the app to be deployed!
 
 ### Local Development
 
@@ -115,7 +118,7 @@ The code was written by myself with some parts being taken from the Love Sandwic
 
 ### Content
 
-The content for the site was created by myself, with the yoga video being embedded from Youtube, and through carrying out research into mindfulness techniques.
+The content for the site was created by myself.
 
 ###  Acknowledgments
 
