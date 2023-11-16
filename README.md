@@ -4,7 +4,7 @@
 
 This is a travel survey designed for a company who wants to gain insights into how their employees travel to work each day, to help them decide if they should encourage more employees to work from home. The data collected informs them the average distance emplyees travel and the different modes of transport they use.
 
-The live site can be found [here](https://travel-survey-d72fc1637c7d.herokuapp.com/)
+The deployed app can be found [here](https://travel-survey-d72fc1637c7d.herokuapp.com/)
 
 ---
 
