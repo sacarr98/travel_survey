@@ -6,6 +6,8 @@ This is a travel survey designed for a company who wants to gain insights into h
 
 The deployed app can be found [here](https://travel-survey-d72fc1637c7d.herokuapp.com/)
 
+<img src="assets/images/travelsurveyapp.PNG" alt="image of deployed app" title="Deployed App">
+
 ---
 
 ## CONTENTS
@@ -48,6 +50,9 @@ The deployed app can be found [here](https://travel-survey-d72fc1637c7d.herokuap
 The program is connected to a Google Sheets document featuring 4 pages. 
 The app intially asks a question about the distance travelled to work each day. This information is sent to the distances worksheet, the app then runs a function to create a tally of the distances travelled and the number of employees that travel each distance, these will then be plotted on a graph in Google Sheets. This allows the employers to visually see the distribution of the distance each employee travels.
 The app then asks a series of questions about the mode of transport of the employees, asking how many times a week they walk/cycle/train/bus/drive/car pool. These results are sent to the transport worksheet, the sum of these results is sent to the transport_results worksheet where it is plotted on a pie chart in google sheets, allowing the employer to easily see which modes of transport are used most.
+
+A flowchart was created to help ensure the flow of questions/functions:
+<img src="assets/images/flowchart.PNG" alt="flowchart of app functions" title="Function Flow Chart">
 
 ## Future Implementations
 

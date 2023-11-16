@@ -2,6 +2,8 @@
 
 Visit the deployed app: [here](https://travel-survey-d72fc1637c7d.herokuapp.com/)
 
+<img src="assets/images/travelsurveyapp.PNG" alt="image of deployed app" title="Deployed App">
+
 - - -
 
 ## CONTENTS
@@ -22,6 +24,8 @@ Visit the deployed app: [here](https://travel-survey-d72fc1637c7d.herokuapp.com/
 ### PEP8 LINTER
 
 [PEP8](https://pep8ci.herokuapp.com/) was used to validate the python code on this app. run.py passed with no errors or warnings to show.
+
+<img src="assets/images/pythonlinterresults.PNG" alt="testing results" title="Python Linter Results">
 
 ## MANUAL TESTING
 
