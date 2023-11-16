@@ -98,7 +98,7 @@ def update_distance_result_worksheet(d_data):
     """
     print("Updating distance result worksheet...\n")
     distance_result_worksheet = SHEET.worksheet("distance_results")
-    distance_result_worksheet.delete_rows(2, end_index = 30)
+    distance_result_worksheet.delete_rows(2, end_index=30)
     for row in d_data:
         distance_result_worksheet.append_row(row)
     print("Distance_result worksheet updated successfully.\n")
@@ -125,7 +125,8 @@ def get_transport_data():
 
         bus_str = input("How often do you take the bus to work each week?\n")
 
-        train_str = input("How often do you take the train to work each week?\n")
+        train_str = input("""How often do you take the train
+        to work each week?\n""")
 
         transport_data = [
             walking_str, cycling_str, driving_str, carpool_str,
@@ -138,6 +139,7 @@ def get_transport_data():
 
     return transport_data
 
+
 def validate_transport_data(values):
     """
     Inside the try, converts all string values into integers.
@@ -148,7 +150,8 @@ def validate_transport_data(values):
         [int(value) for value in values]
         if len(values) != 6:
             raise ValueError(
-                f"Please only enter one value per question, you provided a total of {len(values)}"
+                f"""Please only enter one value per question,
+                you provided a total of {len(values)}"""
             )
     except ValueError as e:
         print(f"Invalid data: {e}, please try again.\n")

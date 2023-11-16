@@ -19,11 +19,9 @@ Visit the deployed app: [here](https://travel-survey-d72fc1637c7d.herokuapp.com/
 
 ## AUTOMATED TESTING
 
-### W3C Validator
+### PEP8 LINTER
 
-[PEP8](https://validator.w3.org/) was used to validate the HTML on all pages of the website. It was also used to validate the CSS.
-
-* [run.py](testing/w3/w3-index.png) - Passed, no errors or warnings to show.
+[PEP8](https://pep8ci.herokuapp.com/) was used to validate the python code on this app. run.py passed with no errors or warnings to show.
 
 ## MANUAL TESTING
 
