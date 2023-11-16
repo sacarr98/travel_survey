@@ -12,14 +12,6 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('travel_survey')
 
-distance = SHEET.worksheet('distance')
-
-d_data = distance.get_all_values()
-
-transport = SHEET.worksheet('transport')
-
-t_data = transport.get_all_values()
-
 
 def get_distance_data():
     """
@@ -97,8 +89,6 @@ def calculate_distance_data(d_data):
     distances_counted = Counter(d_data)
     distances_sorted = sorted(distances_counted.items())
 
-    print(distances_sorted)
-
     return distances_sorted
 
 
@@ -119,26 +109,51 @@ def get_transport_data():
     """
     print('''The following questions are about your mode of transport,
             please enter the number of days you use each mode of
-            transport as a single whole digit.\n''')
+            transport as a single whole digit.
+            If you never use that mode of transport please enter 0.\n''')
 
-    walking_str = input("How often do you walk to work each week?\n")
+    while True:
 
-    cycling_str = input("How often do you cycle to work each week?\n")
+        walking_str = input("How often do you walk to work each week?\n")
 
-    driving_str = input("How often do you drive to work each week?\n")
+        cycling_str = input("How often do you cycle to work each week?\n")
 
-    carpool_str = input("How often do you car pool to work each week?\n")
+        driving_str = input("How often do you drive to work each week?\n")
 
-    bus_str = input("How often do you take the bus to work each week?\n")
+        carpool_str = input("How often do you car pool to work each week?\n")
 
-    train_str = input("How often do you take the train to work each week?\n")
+        bus_str = input("How often do you take the bus to work each week?\n")
 
-    transport_data = [
-        walking_str, cycling_str, driving_str, carpool_str,
-        bus_str, train_str
-        ]
+        train_str = input("How often do you take the train to work each week?\n")
+
+        transport_data = [
+            walking_str, cycling_str, driving_str, carpool_str,
+            bus_str, train_str
+            ]
+
+        if validate_transport_data(transport_data):
+            print("Data is valid!")
+            break
 
     return transport_data
+
+def validate_transport_data(values):
+    """
+    Inside the try, converts all string values into integers.
+    Raises ValueError if strings cannot be converted into int,
+    or if more than one value is entered.
+    """
+    try:
+        [int(value) for value in values]
+        if len(values) != 6:
+            raise ValueError(
+                f"Please only enter one value per question, you provided a total of {len(values)}"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
 
 
 def update_transport_worksheet(t_data):
